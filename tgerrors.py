@@ -1,0 +1,2 @@
+class InvalidAnswerError(BaseException):
+    pass
