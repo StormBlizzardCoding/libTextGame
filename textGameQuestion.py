@@ -75,10 +75,10 @@ class textGameYesNo(textGameQuestion):
         " Create a true or false text-based game question. For more info see textGameQuestion. "
         textGameQuestion.__init__(self, question, {'Yes':True, 'No':False}, acceptance)
 
-class textGameNumbers(textGameQuestion):
+class textGameNumber(textGameQuestion):
     def __init__(self, question, minnum, maxnum, acceptance=3):
         " Create a text-based question with answers between two numbers accepted. For more info see textGameQuestion. "
-        adict = {}
+        ndict = {}
         for x in range(minnum, maxnum+1):
-            adict[str(x)] = x
-        textGameQuestion.__init__(self, question, adict, acceptance)
+            ndict[str(x)] = x
+        textGameQuestion.__init__(self, question, ndict, acceptance)
