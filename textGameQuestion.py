@@ -1,5 +1,7 @@
+# Imports
 from tgerrors import *
 
+# Base Class
 class textGameQuestion:
     def __init__(self, question, possibleAnswers={"Yes":True, "No":False}, acceptance=3):
         """ Create a text-based game question.
@@ -66,3 +68,17 @@ certain cases using bitwise AND.
                 return(self._a3[answer])
         except KeyError:
             raise InvalidAnswerError("Answer was invalid. Always check answer using checkValidAnswer(answer).")
+
+# Pre-made answer classes
+class textGameYesNo(textGameQuestion):
+    def __init__(self, question, acceptance=3):
+        " Create a true or false text-based game question. For more info see textGameQuestion. "
+        textGameQuestion.__init__(self, question, {'Yes':True, 'No':False}, acceptance)
+
+class textGameNumbers(textGameQuestion):
+    def __init__(self, question, minnum, maxnum, acceptance=3):
+        " Create a text-based question with answers between two numbers accepted. For more info see textGameQuestion. "
+        adict = {}
+        for x in range(minnum, maxnum+1):
+            adict[str(x)] = x
+        textGameQuestion.__init__(self, question, adict, acceptance)
