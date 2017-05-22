@@ -82,3 +82,23 @@ class textGameNumber(textGameQuestion):
         for x in range(minnum, maxnum+1):
             ndict[str(x)] = x
         textGameQuestion.__init__(self, question, ndict, acceptance)
+
+class textGameMaths(textGameQuestion):
+    def __init__(self, question, correctAnswer, acceptance=3):
+        " Create a mathematical text-based game question. For more info see textGameQuestion. "
+        textGameQuestion.__init__(self, question, {str(correctAnswer):True}, acceptance)
+
+    def checkValidAnswer(self, answer):
+        " Check if an answer is a valid number. "
+        try:
+            a = float(answer):
+            return(True)
+        except TypeError:
+            return(False)
+
+    def checkAnswerOutput(self, answer):
+        " Check if a given answer is correct. "
+        try:
+            return( float(answer) == float(self._a[0]) )
+        except TypeError:
+            raise InvalidAnswerError("Answer was invalid. Always check answer using checkValidAnswer(answer).")
