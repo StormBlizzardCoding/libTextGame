@@ -7,16 +7,22 @@ class textGameQuestion:
         """ Create a text-based game question.
 
 possibleAnswers is a dictionary of possible answers matching
-up to what they mean.
-acceptance is an integer defining whether or not to accept
-certain cases using bitwise AND.
+up to what they mean or a list of answers which mean
+themselves.
+'acceptance' is an integer defining whether or not to accept
+certain cases using bitwise AND:
 
 &1 means accept lowercase.
 &2 means accept first letter.
 """
         self._q = question
-        self._a = list(possibleAnswers.keys())
-        self._a2 = list(possibleAnswers.values())
+        
+        if type(possibleAnswers) == type({}):
+            self._a = list(possibleAnswers.keys())
+            self._a2 = list(possibleAnswers.values())
+        elif type(possibleAnswers) == type([]) or type(possibleAnswers) == type(""):
+            self._a = self._a2 = list(possibleAnswers)
+            
         self._a3 = {}
 
         for ans in possibleAnswers.keys():
@@ -91,7 +97,7 @@ class textGameMaths(textGameQuestion):
     def checkValidAnswer(self, answer):
         " Check if an answer is a valid number. "
         try:
-            a = float(answer):
+            a = float(answer)
             return(True)
         except TypeError:
             return(False)
