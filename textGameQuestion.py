@@ -86,7 +86,7 @@ class textGameNumber(textGameQuestion):
 class textGameMaths(textGameQuestion):
     def __init__(self, question, correctAnswer, acceptance=3):
         " Create a mathematical text-based game question. For more info see textGameQuestion. "
-        textGameQuestion.__init__(self, question, {str(correctAnswer):True}, acceptance)
+        textGameQuestion.__init__(self, question, {str(float(correctAnswer)):True}, acceptance)
 
     def checkValidAnswer(self, answer):
         " Check if an answer is a valid number. "
